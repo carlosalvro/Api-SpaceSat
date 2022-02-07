@@ -1,28 +1,18 @@
+const boom = require("@hapi/boom");
+
+const {models} = require("./../libs/sequelize");
 
 class MissionService {
   constructor() {}
 
   async create(data) {
-    return data;
+    const newUser = await models.Mission01.create(data);
+    return newUser;
   }
 
   async find() {
-    return [];
-  }
-
-  async findOne(id) {
-    return {id};
-  }
-
-  async update(id, changes) {
-    return {
-      id, 
-      changes,
-    };
-  }
-
-  async delete(id) {
-    return {id}
+    const rta  = await models.Mission01.findAll();
+    return rta;
   }
 }
 

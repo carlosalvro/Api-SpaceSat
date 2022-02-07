@@ -14,12 +14,12 @@ const pres = Joi.number();
 const createMissionRowSchema = Joi.object({
   id: id,
   altitud: altitud.required(),
-  gyrox: gyrox.required(),
-  gyroy: gyroy.required(),
-  gyroz: gyroz.required(),
-  acelx: acelx.required(),
-  acely: acely.required(),
-  acelz: acelz.required(),
+  gyroX: gyrox.required(),
+  gyroY: gyroy.required(),
+  gyroZ: gyroz.required(),
+  acelX: acelx.required(),
+  acelY: acely.required(),
+  acelZ: acelz.required(),
   temp: temp.required(),
   pres: pres.required(),
 });
