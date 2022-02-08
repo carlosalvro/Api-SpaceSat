@@ -20,6 +20,11 @@ const UsersSchema = {
     unique: false,
     type: DataTypes.STRING
   },
+  email: {
+    allowNull: false,
+    unique: true,
+    type: DataTypes.STRING,
+  },
   password: {
     allowNull: false,
     type: DataTypes.CHAR
