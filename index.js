@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const routerApi =  require("./routes");
 const {errorHandler, boomErrorHandler } = require("./middlewares/error.handler");
+const {checkApiKey} = require("./middlewares/auth.handler")
 
 const port = 3001;
 const app = express();
@@ -20,7 +21,7 @@ const options = {
 }
 app.use(cors(options));
 
-app.get("/", (req, res) => {
+app.get("/", checkApiKey, (req, res) => {
   res.send("Hola este es el home");
 })
 
