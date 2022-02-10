@@ -14,6 +14,13 @@ class MissionService {
     const rta  = await models.Mission01.findAll();
     return rta;
   }
+
+  async findLastOne() {
+    const rta  = await models.Mission01.findOne({
+      order: [["createdAt", "DESC"]],
+    });
+    return rta;
+  }
 }
 
 module.exports = MissionService;

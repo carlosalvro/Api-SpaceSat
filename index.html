@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <h1>Tabla con Socket</h1>
+  <table id="table">
+    <tr id="header">
+      <th>Id</th>
+      <th>Altitud</th>
+      <th>Giro X</th>
+      <th>Giro Y</th>
+      <th>Giro Z</th>
+      <th>Aceleración X</th>
+      <th>Aceleración Y</th>
+      <th>Aceleración Z</th>
+      <th>Temperatura</th>
+      <th>Presión</th>
+      <th>Hora</th>
+    </tr>
+  </table>
+  <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect("http://localhost:3001")
+
+    fetch("http://localhost:3001/api/v1/mission01")
+      .then(response => response.json())
+      .then(data => {
+        data.map(row => {
+          const values = Object.values(row)
+          const trContainer = document.createElement("tr")
+          values.map(value => {
+            const p = document.createElement("td");
+            const valueNode = document.createTextNode(value);
+            p.appendChild(valueNode);
+            trContainer.insertAdjacentElement("beforeend", p)
+          })
+          table.insertAdjacentElement("beforeend", trContainer)
+        })
+      })
+
+
+  
+    const table = document.getElementById("table")
+    socket.on("row-added", (data) => {
+      const values = Object.values(data)
+      const trContainer = document.createElement("tr")
+      values.map(value => {
+        const p = document.createElement("td");
+        const valueNode = document.createTextNode(value);
+        p.appendChild(valueNode);
+        trContainer.insertAdjacentElement("beforeend", p)
+      })
+      table.insertAdjacentElement("beforeend", trContainer)
+    })
+  </script>
+</body>
+
+</html>
