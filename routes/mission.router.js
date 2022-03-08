@@ -1,8 +1,8 @@
 const express = require('express');
 
-const MissionService = require('./../services/mission.service');
-const validatorHandler = require('./../middlewares/validator.handler');
-const { createMissionRowSchema } = require('./../schemas/mission01.schema');
+const MissionService = require('../services/mission.service');
+const validatorHandler = require('../middlewares/validator.handler');
+const { createMissionRowSchema } = require('./../schemas/mission.schema');
 
 const router = express.Router();
 const service = new MissionService();

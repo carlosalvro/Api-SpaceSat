@@ -1,16 +1,13 @@
 'use strict';
 
-const {UsersSchema, USERS_TABLE} = require("../models/users.model");
-const { MissionSchema, MISSION1_TABLE} = require("../models/mission01.model");
+const { MissionSchema, MISSION_TABLE} = require("../models/mission.model");
 
 module.exports = {
   async up (queryInterface) {
-    await queryInterface.createTable(USERS_TABLE, UsersSchema);
-    await queryInterface.createTable(MISSION1_TABLE, MissionSchema);
+    await queryInterface.createTable(MISSION_TABLE, MissionSchema);
   },
 
   async down (queryInterface) {
-    await queryInterface.dropTable(USERS_TABLE);
-    await queryInterface.dropTable(MISSION1_TABLE);
+    await queryInterface.dropTable(MISSION_TABLE);
   }
 };

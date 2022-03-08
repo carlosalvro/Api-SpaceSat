@@ -1,6 +1,6 @@
 const {Model, DataTypes, Sequelize} = require("sequelize");
 
-const MISSION1_TABLE = "mission01";
+const MISSION_TABLE = "mission";
 
 const MissionSchema = {
   missionRowId: {
@@ -68,7 +68,7 @@ const MissionSchema = {
   }
 }
 
-class Mission01 extends Model {
+class Mission extends Model {
   static associate() {
     //
   }
@@ -76,11 +76,11 @@ class Mission01 extends Model {
   static config(sequelize) {
     return {
       sequelize, 
-      tableName: MISSION1_TABLE,
-      modelName: "Mission01",
+      tableName: MISSION_TABLE,
+      modelName: "Mission",
       timestamp: false,
     }
   }
 }
 
-module.exports = {MISSION1_TABLE, Mission01, MissionSchema}
+module.exports = {MISSION_TABLE, Mission, MissionSchema}
