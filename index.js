@@ -24,7 +24,7 @@ app.use(cors(options));
 socket.connect(server)
 
 app.get("/", (req, res) => {
-  res.send("Hola este es el home");
+  res.sendFile(__dirname + "/main.html");
 })
 
 routerApi(app);

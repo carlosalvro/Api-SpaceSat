@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    header, main, .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container a {
+      text-decoration: none;
+      color: black;
+      background-color: rosybrown;
+      padding: 10px 10px;
+      border-radius: 5px;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <h2>Bienvenido a la página de prueba de la api de SpaceSat</h2>
+  </header>
+  <main>
+    <div class="container">
+      <h3>Ruta para guardar el nombre del equipo</h3>
+      <a href="./api/v1/team">Ruta equipos</a>
+    </div>
+    <div class="container">
+      <h3>Ruta para guardar los elementos del dashboard</h3>
+      <a href="./api/v1/elements">Ruta elementos</a>
+    </div>
+    <div class="container">
+      <h3>Ruta para guardar la data del cansat</h3>
+      <a href="./api/v1/mission">Ruta datos misión</a>
+    </div>
+  </main>
+</body>
+</html>
