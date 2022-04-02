@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
   res.json(team);
 });
 
-router.get("/:areaId", 
+router.get("/:teamId", 
   validatorHandler(getTeamById, "params"),
   async (req, res, next) => {
     try {
