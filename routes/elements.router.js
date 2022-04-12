@@ -6,6 +6,7 @@ const  { getElementById, updateElement, createElement} = require("../schemas/ele
 const router = express.Router();
 const {models} = require("../libs/sequelize");
 const service = new ElementService(models.Element);
+const {socket} = require("../socket");
 
 router.get("/", async (req, res, next) => {
   const element  = await service.find();
@@ -29,6 +30,8 @@ router.post("/",
     try {
       const body = req.body;
       const newElement = await service.create(body);
+      const rows = await service.find();
+      socket.io.emit("element-change", rows)
       return res.status(201).json(newElement);
     } catch (error) { next(error)}
   })
@@ -41,6 +44,8 @@ router.patch("/:elementId",
       const body = req.body;
       const { elementId } = req.params;
       const element = await service.update(elementId, body);
+      const rows = await service.find();
+      socket.io.emit("element-change", rows)
       res.json(element);
     } catch (error) { next(error) }
 })
@@ -51,6 +56,8 @@ router.delete("/:elementId",
     try {
       const {elementId} = req.params;
       const rta = await service.delete(elementId);
+      const rows = await service.find();
+      socket.io.emit("element-change", rows)
       res.json(rta)
     } catch (error) {next(error)}
   }
