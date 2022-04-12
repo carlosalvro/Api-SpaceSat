@@ -29,7 +29,7 @@ router.post("/",
     try {
       const body = req.body;
       const newElement = await service.create(body);
-      res.status(201).json(newElement);
+      return res.status(201).json(newElement);
     } catch (error) { next(error)}
   })
 
