@@ -18,7 +18,7 @@ router.get("/:elementId",
   async (req, res, next) => {
     try {
       const {elementId} = req.params;
-      const elements  = await service.findOneComplete(elementId);
+      const elements  = await service.findOne(elementId);
       res.json(elements);
     } catch (error) {next(error)}
     

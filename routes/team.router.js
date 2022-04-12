@@ -17,7 +17,7 @@ router.get("/:teamId",
   async (req, res, next) => {
     try {
       const {teamId} = req.params;
-      const teams  = await service.findOneComplete(teamId);
+      const teams  = await service.findOne(teamId);
       res.json(teams);
     } catch (error) {next(error)}
     
